@@ -21,7 +21,7 @@ const run = async function(){
     let slash_commands = [
         {
           "name": "submit",
-          "description": "",
+          "description": "Submit info on what you are building to share with others during office hours",
           "options": []
         },
       ]
@@ -37,7 +37,7 @@ const run = async function(){
         console.error(e.code)
         console.error(e.response?.data)
         console.log(`${e.code} error from discord`)
-        throw e
+        throw e.response?.data
       }
     
     
