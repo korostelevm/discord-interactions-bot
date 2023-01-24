@@ -9,7 +9,7 @@ const app = express()
 app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req, res) => {
 
     const interaction = req.body
-    const interaction_type = interaction.type
+    const interaction_type = interaction.data.type
     console.log(interaction_type)
     if(interaction_type == 1) {
         const command_name = interaction.data.name
@@ -22,7 +22,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        "type": 9, 
+                        "type": 9,
                         "data": {
                             "title": "Office Hours Demo",
                               "custom_id": "cool_modal",
