@@ -10,7 +10,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
 
     const interaction = req.body
     const interaction_type = interaction.data.type
-
+    console.log(interaction_type)
     if(interaction_type == 1) {
         const command_name = interaction.data.name
 
