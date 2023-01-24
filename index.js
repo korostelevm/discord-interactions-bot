@@ -9,9 +9,9 @@ const app = express()
 app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req, res) => {
 
     const interaction = req.body
-    const interaction_type = interaction.data.type
+    const interaction_type = interaction.type
     console.log(interaction_type)
-    if(interaction_type == 1) {
+    if(interaction_type == 2) {
         const command_name = interaction.data.name
 
         if(command_name == `submit`) {
