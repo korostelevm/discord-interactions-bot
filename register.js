@@ -37,7 +37,8 @@ const run = async function(){
         console.error(e.code)
         console.error(e.response?.data)
         console.log(`${e.code} error from discord`)
-        throw e.response?.data
+        // throw e.response?.data
+        throw e
       }
     
     
