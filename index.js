@@ -87,7 +87,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
             res.sendStatus(200)
         }
 
-    } else if(interaction_type == 3) {
+    } else if(interaction_type == 5) {
         const custom_id = interaction.data.custom_id
 
         await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
