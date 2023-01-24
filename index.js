@@ -110,8 +110,8 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
 
         if (custom_id == `cool_modal`) {
             
-            await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
-				method: "POST",
+            await fetch(`https://discord.com/api/webhooks/${interaction.application_id}/${interaction.token}/messages/@original`, {
+				method: "PATCH",
 				headers: {
 					"Authorization": `Bot ${process.env.new_web_bot_token}`,
 					"Content-Type": "application/json"
