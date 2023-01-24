@@ -14,7 +14,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
     if(interaction_type == 1) {
         const command_name = interaction.data.name
 
-        if(command_name !== `submit`) {
+        if(command_name == `submit`) {
             await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
                     method: "POST",
                     headers: {
@@ -166,6 +166,8 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
         }
         
     }
+    console.error('no condition met')
+    return res.sendStatus(403)
 })
 
 app.listen("3000", () => console.log(`Server Is Running, You better catch it!`))
