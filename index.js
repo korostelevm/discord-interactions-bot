@@ -22,7 +22,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        "type": 9,
+                        "type": 9, 
                         "data": {
                             "title": "Office Hours Demo",
                               "custom_id": "cool_modal",
