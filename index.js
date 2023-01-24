@@ -84,13 +84,13 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                     })
                 })
 
-            res.sendStatus(200)
+                return res.sendStatus(200)
         }
 
     } else if(interaction_type == 5) {
         const custom_id = interaction.data.custom_id
         console.log('custom id', custom_id)
-        await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
+        let response = await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
             method: "POST",
             headers: {
                 "Authorization": `Bot ${process.env.token}`,
@@ -103,6 +103,10 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                 }
             })
         })
+
+        response = await response.text()
+        console.log(response)
+
 
         if (custom_id == `cool_modal`) {
             
@@ -123,7 +127,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
 
             await modal_handler(interaction, req)
             
-            res.sendStatus(200)
+            return res.sendStatus(200)
 
         } else if(custom_id == 'accept') {
 
@@ -145,7 +149,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                 }
             })
                         
-            res.sendStatus(200)
+            return res.sendStatus(200)
 
         }  else if(custom_id == 'self_roles') {
 
@@ -162,7 +166,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                 })
             })
 
-            res.sendStatus(200)
+            return res.sendStatus(200)
         }
         
     }
