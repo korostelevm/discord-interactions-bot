@@ -37,7 +37,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                                           "min_length": 1,
                                           "max_length": 100,
                                           "placeholder": "Eg. https://github.com/user/repo_name",
-                                         "required": true
+                                         "required": false
                                        }]
                                   },
                                 {
@@ -50,7 +50,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                                           "min_length": 1,
                                           "max_length": 100,
                                           "placeholder": "For Eg: https://your-app-id.cyclic.app/",
-                                         "required": true
+                                         "required": false
                                        }]
                                   },
                                 {
@@ -63,7 +63,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                                         "min_length": 1,
                                         "max_length": 500,
                                         "placeholder": "Share a bit about your app/site.",
-                                        "required": true
+                                        "required": false
                                         }]
                                 },
                                 {
