@@ -16,7 +16,7 @@ const payload = {
                     "custom_id": "make",
                     "placeholder": "Pick Your Roles",
                     "min_values": 0,
-                    "max_values": 1,
+                    "max_values": 2,
                     "options": [
                         {
                             "label": "JS",
