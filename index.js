@@ -10,7 +10,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
 
     const interaction = req.body
     const interaction_type = interaction.type
-    console.log(interaction_type)
+
     if(interaction_type == 2) {
         const command_name = interaction.data.name
 
@@ -18,7 +18,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
             await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
                     method: "POST",
                     headers: {
-                        "Authorization": `Bot ${process.env.new_web_bot_token}`,
+                        "Authorization": `Bot ${process.env.token}`,
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
@@ -37,7 +37,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                                           "min_length": 1,
                                           "max_length": 100,
                                           "placeholder": "Eg. https://github.com/user/repo_name",
-                                         "required": false
+                                         "required": true
                                        }]
                                   },
                                 {
@@ -50,7 +50,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                                           "min_length": 1,
                                           "max_length": 100,
                                           "placeholder": "For Eg: https://your-app-id.cyclic.app/",
-                                         "required": false
+                                         "required": true
                                        }]
                                   },
                                 {
@@ -63,7 +63,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                                         "min_length": 1,
                                         "max_length": 500,
                                         "placeholder": "Share a bit about your app/site.",
-                                        "required": false
+                                        "required": true
                                         }]
                                 },
                                 {
@@ -84,13 +84,13 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                     })
                 })
 
-                return res.sendStatus(200)
+            return res.sendStatus(200)
         }
 
-    } else if(interaction_type == 5) {
+    } else if(interaction_type == 5 || interaction_type == 3) {
         const custom_id = interaction.data.custom_id
-        console.log('custom id', custom_id)
-        let response = await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
+
+        await fetch(`https://discord.com/api/interactions/${interaction.id}/${interaction.token}/callback`, {
             method: "POST",
             headers: {
                 "Authorization": `Bot ${process.env.token}`,
@@ -104,30 +104,22 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
             })
         })
 
-        response = await response.text()
-        console.log(response)
-
-
         if (custom_id == `cool_modal`) {
             
             await fetch(`https://discord.com/api/webhooks/${interaction.application_id}/${interaction.token}/messages/@original`, {
 				method: "PATCH",
 				headers: {
-					"Authorization": `Bot ${process.env.new_web_bot_token}`,
+					"Authorization": `Bot ${process.env.token}`,
 					"Content-Type": "application/json"
 				},
 				body: JSON.stringify({
-					type: 4,
-					data: {
-						flags: 64,
-						content: "Your Demo Has been Successfully Submitted! Looking Forward for you to show off your work! Make sure to join us at our next Office Hours."
-					}
+                    content: "Your Demo Has been Successfully Submitted! Looking Forward for you to show off your work! Make sure to join us at our next Office Hours."
 				})
 			})
 
             await modal_handler(interaction, req)
             
-            return res.sendStatus(200)
+            res.sendStatus(200)
 
         } else if(custom_id == 'accept') {
 
@@ -149,7 +141,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                 }
             })
                         
-            return res.sendStatus(200)
+            res.sendStatus(200)
 
         }  else if(custom_id == 'self_roles') {
 
@@ -166,12 +158,9 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                 })
             })
 
-            return res.sendStatus(200)
+            res.sendStatus(200)
         }
-        
     }
-    console.error('no condition met')
-    return res.sendStatus(403)
 })
 
 app.listen("3000", () => console.log(`Server Is Running, You better catch it!`))
