@@ -4,7 +4,7 @@
   "description": "A Discord Interactions Bot",
   "main": "index.js",
   "scripts": {
-    "postinstall": "node register.js"
+    "postinstall": "node register.js && node roles.js"
   },
   "author": "chainsmoker-codes",
   "license": "ISC",
