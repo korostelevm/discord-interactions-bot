@@ -20,11 +20,11 @@ const payload = {
                     "options": [
                         {
                             "label": "JS",
-                            "value": "1068251439681503282",
+                            "value": "1068251439681503282",  // comes from the role id 
                             "description": "",
                             "emoji": {
-                                "name": "javascript",
-                                "id": "1063861988960243782"
+                                "name": "javascript", // emoji name
+                                "id": "1063861988960243782" // the emoji id
                             }
                         },
                         // {
