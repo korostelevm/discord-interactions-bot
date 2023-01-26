@@ -27,15 +27,15 @@ const payload = {
                                 "id": "1063861988960243782" // the emoji id
                             }
                         },
-                        // {
-                        //     "label": "Full Stacks",
-                        //     "value": "1061282057193525309",
-                        //     "description": "",
-                        //     "emoji": {
-                        //         "name": "pharmanite",
-                        //         "id": "1060483569409085470"
-                        //     }
-                        // },
+                        {
+                            "label": "Vue.js",
+                            "value": "1068258600658686012",
+                            "description": "",
+                            "emoji": {
+                                "name": "vue",
+                                "id": "1063862578830385172"
+                            }
+                        },
                         // {
                         //     "label": "Front Ends",
                         //     "value": "1061281954290487388",
