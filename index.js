@@ -144,7 +144,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
             res.sendStatus(200)
 
         }  else if(custom_id == 'self_roles') {
-
+            console.log('self roles')
             await update_roles(interaction)
     
             await fetch(`https://discord.com/api/webhooks/${interaction.application_id}/${interaction.token}/messages/@original`, {
