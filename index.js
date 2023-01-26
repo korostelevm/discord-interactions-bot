@@ -143,8 +143,8 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
                         
             res.sendStatus(200)
 
-        }  else if(custom_id == 'self_roles') {
-            console.log('self roles')
+        }  else if(custom_id == 'make') {
+            
             await update_roles(interaction)
     
             await fetch(`https://discord.com/api/webhooks/${interaction.application_id}/${interaction.token}/messages/@original`, {
@@ -161,6 +161,8 @@ app.post('/interactions', verifyKeyMiddleware(process.env.public_key), async(req
             res.sendStatus(200)
         }
     }
+
+    return res.sendStatus(403)
 })
 
 app.listen("3000", () => console.log(`Server Is Running, You better catch it!`))
