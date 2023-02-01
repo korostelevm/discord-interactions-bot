@@ -4,7 +4,7 @@ const payload = {
     "content": " ",
     "embeds": [
         {
-            "description": "**What do you make?**"
+            "description": "**What is your favorite to code with? (Top color will show in your profile.)**"
         }
     ],
     "components": [
@@ -16,7 +16,7 @@ const payload = {
                     "custom_id": "make",
                     "placeholder": "Pick Your Roles",
                     "min_values": 0,
-                    "max_values": 2,
+                    "max_values": 5,
                     "options": [
                         {
                             "label": "JS",
@@ -36,24 +36,34 @@ const payload = {
                                 "id": "1063862578830385172"
                             }
                         },
-                        // {
-                        //     "label": "Front Ends",
-                        //     "value": "1061281954290487388",
-                        //     "description": "",
-                        //     "emoji": {
-                        //         "name": "bulls",
-                        //         "id": "1060483555567874098"
-                        //     }
-                        // },
-                        // {
-                        //     "label": "Bots",
-                        //     "value": "1061282118426181692",
-                        //     "description": "",
-                        //     "emoji": {
-                        //         "name": "default",
-                        //         "id": "1060483624518025256"
-                        //     }
-                        // }
+                        {
+                            "label": "React",
+                            "value": "1070374347006562406",
+                            "description": "",
+                            "emoji": {
+                                "name": "react",
+                                "id": "1070374120967118918"
+                            }
+                        },
+                        {
+                            "label": "Python",
+                            "value": "1070375363802312764",
+                            "description": "",
+                            "emoji": {
+                                "name": "default",
+                                "id": "1070375118074822746"
+                            },
+                        },
+                        {
+                            "label": "Lambda",
+                            "value": "1070375531884855337",
+                            "description": "",
+                            "emoji": {
+                                "name": "default",
+                                "id": "1063862214257291414"
+                            }
+
+                        }
                     ]
                 }
             ]
